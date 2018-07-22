@@ -1,0 +1,23 @@
+Repo URL : https://github.com/vikash-techy/StudentArchitect.git
+
+Angular create new project : ng new <project_name>
+
+Git Commands 
+------------
+To push a new/existing project to github
+Step 1.
+Initializr : git init 
+
+Step 2.
+Add remote Repo : git remote add origin https://github.com/vikash-techy/StudentArchitect.git
+
+Step 3.
+git push origin master
+
+Git pull : 
+In your VS Code open command pallete to do the git cloning (cmd + shift + P) , then type git clone.
+add the repo  e.g : https://github.com/vikash-techy/StudentArchitect.git, then navigate to create local Repo
+Then open the project in VS Code.
+
+Next Step : 
+To Run this project first step run the following cmd to install the node packages : npm install

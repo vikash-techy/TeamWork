@@ -1,0 +1,64 @@
+.box {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 50px;
+    width: 80%;
+  }
+
+  .one {
+    flex: 1 1 auto;
+    margin: 10px;
+    background-color: rgb(148, 18, 18);
+    border-radius: 10px;
+  }
+
+  .two {
+    flex: 1 1 auto;
+    margin: 10px;
+    background-color: aquamarine;
+    border-radius: 10px;
+  }
+
+  .three {
+    flex: 1 1 auto;
+    margin: 10px;
+    background-color: rgb(76, 236, 76);
+    border-radius: 10px;
+  }
+
+  .pricing-detail{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 15px;
+    color: white;
+  }
+
+  .course-type-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: 55px;
+    font-size: 12px;
+  }
+
+  .total-price-detail{
+    background-color:rgb(165, 32, 32);
+  }
+
+  .total-price{
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .total-months{
+    opacity: .7;
+    margin-top: 1px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+  }
