@@ -21,3 +21,9 @@ Then open the project in VS Code.
 
 Next Step : 
 To Run this project first step run the following cmd to install the node packages : npm install
+
+Angular Commands : 
+------------------
+Create component : ng generate component <component_name>
+
+Create router : ng generate module app-routing --flat --module=app

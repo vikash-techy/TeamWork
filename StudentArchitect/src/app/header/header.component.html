@@ -1,15 +1,9 @@
-<div>
-
-  <!-- <nav class="topnav-right">
-    <a routerLink="/classes">Classes</a>
-    <a routerLink="/pricing">Pricing</a>
-    <a routerLink="/why_sa">Why SA?</a>
-  </nav> -->
-
-  
   <div class="topnav">
-      <img height="56" src='assets/images/logo.jpeg' >
+    
     <div class="topnav-left">
+        <a routerLink="/home" title="Student Architect">
+          <img height="55" src="assets/images/logo.jpeg" alt="Student Architect">
+        </a>
       <a routerLink="/classes">Classes</a>
       <a routerLink="/pricing">Pricing</a>
       <a routerLink="/why_sa">Why SA?</a>
@@ -18,5 +12,5 @@
       <a href="#search">Search</a>
       <a href="#about">About</a>
     </div>
+    <router-outlet></router-outlet>
   </div>
-</div>
