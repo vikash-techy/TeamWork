@@ -1,7 +1,7 @@
 .box {
     display: flex;
     justify-content: space-around;
-    text-align: center;
+    /* text-align: center; */
     margin-top: 50px;
     width: 80%;
   }
@@ -9,7 +9,7 @@
   .one {
     flex: 1 1 auto;
     margin: 10px;
-    background-color: rgb(148, 18, 18);
+    background: whitesmoke;
     border-radius: 10px;
   }
 
@@ -32,6 +32,7 @@
     flex-direction: column;
     padding: 0 15px 15px;
     color: white;
+    margin-left: 0px;
   }
 
   .course-type-heading{
@@ -61,4 +62,31 @@
     font-weight: 600;
     display: flex;
     align-items: flex-start;
+  }
+
+  .course-timeline{
+    position: relative;
+    padding: 8px 24px 8px 10px;
+    border-radius: 8px;
+    background-color: white;
+    margin-top: auto;
+    cursor: pointer;
+  }
+
+  .course-timeline-one{
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: -.45px;
+    color: #5d5d5d;
+    align-items: flex-start;
+  }
+
+  .course-timeline-two{
+    margin-top: 3px;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 600;
+    color: #695b5b;
+    opacity: .7;
   }
