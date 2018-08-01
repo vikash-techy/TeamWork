@@ -1,6 +1,6 @@
 #main-component {
     background: url("../images/SA_bck_image.jpg");
-    height: 100%;
+    /* height: 100%; */
     margin: 0;
     /* Center and scale the image nicely */
     background-position: center;
