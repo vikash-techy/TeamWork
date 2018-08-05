@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     background: whitesmoke;
 }
 
@@ -10,4 +10,10 @@
     min-height: 100%;
     min-width: 150px;
     border-right: solid;
+}
+
+.right_nav{
+position: relative;
+/* height: 100vh; */
+overflow-y: auto;
 }
