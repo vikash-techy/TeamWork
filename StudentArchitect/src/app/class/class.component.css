@@ -118,7 +118,7 @@ align-items: center;
     min-height: 100%;
     min-width: calc(100vw - 152px);
     overflow-y: auto;
-    padding: 80px 150px;
+    padding: 80px 270px;
     }
     
 
@@ -136,11 +136,10 @@ align-items: center;
 .subject{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.06);
-    height: 200px;
-    /* padding: 10px; */
+    height: 220px;
     border-radius: 6px;
     background: #fff;
     margin: 10px 10px 10px 10px;
@@ -195,8 +194,9 @@ align-items: center;
     right: 0;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    margin-top: 10px;
+    margin-top: 15px;
     color: green;
+    margin-bottom: 0;
   }
 
 
