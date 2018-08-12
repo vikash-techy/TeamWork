@@ -119,8 +119,9 @@
 
 .subject-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     line-height: 1;
+    text-align: center;
 }
 
 .subject{
@@ -130,7 +131,7 @@
     align-items: center;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.06);
     height: 200px;
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 6px;
     background: #fff;
     margin: 10px 10px 10px 10px;
@@ -144,6 +145,7 @@
     box-shadow: 0 0 3px 0 rgba(0,0,0,.08);
     justify-content: center;
     align-items: center;
+    margin-top: 16px;
 }
 
 .icon-bg-yellow {
@@ -156,6 +158,37 @@
     color: #2d2d2d;
     font-size: 20px;
 }
+
+.video-detail{
+    color: #c8c8c8;
+    font-weight: 600;
+    font-size: 12px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 5px;
+    width: 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .start-learning{
+    background: #f6f6f7;
+    padding: 13px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-top: 10px;
+    color: green;
+  }
 
 
 /* ********************************* RIGHT NAV CSS End ********************************* */
