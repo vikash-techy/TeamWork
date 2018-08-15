@@ -161,6 +161,18 @@ align-items: center;
     background: #f1c05b;
 }
 
+.icon-bg-reddish{
+  background: #eb4d67e0;
+}
+
+.icon-bg-blueish{
+  background: #638ce6e0;
+}
+
+.icon-bg-greenish{
+  background: #5be0a9ef;
+}
+
 .subject-name {
     margin-top: 18px;
     font-weight: 600;
@@ -198,6 +210,8 @@ align-items: center;
     margin-top: 15px;
     color: green;
     margin-bottom: 0;
+    font-family: sans-serif;
+    font-weight: 600;
   }
 
 
