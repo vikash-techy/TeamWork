@@ -143,6 +143,7 @@ align-items: center;
     border-radius: 6px;
     background: #fff;
     margin: 10px 10px 10px 10px;
+    cursor: pointer;
 }
 
 .subject-icon {
