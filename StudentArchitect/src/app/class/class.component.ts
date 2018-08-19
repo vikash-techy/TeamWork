@@ -1,4 +1,4 @@
-import { Subject } from './../subject';
+import { Subject } from '../entities/subject';
 import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../services/subject.service';
 

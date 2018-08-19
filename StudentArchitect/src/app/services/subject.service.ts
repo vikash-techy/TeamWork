@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from '../subject';
+import { Subject } from '../entities/subject';
 import { Observable, of } from 'rxjs';
 import { SUBJECTS } from '../mock-data/mock-subjects';
 

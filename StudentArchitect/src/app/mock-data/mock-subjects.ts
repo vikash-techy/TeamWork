@@ -1,5 +1,5 @@
-import { SVG } from './../svg';
-import { Subject } from './../subject';
+import { SVG } from '../entities/svg';
+import { Subject } from '../entities/subject';
 
 const MOCK_SVG: SVG[] = [
     {
