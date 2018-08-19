@@ -1,39 +1,40 @@
-.class-container{
-    display: flex;
-    flex-direction: row;
-    min-width: 100%;
-    min-height: calc(100vh - 53px);
-    background: whitesmoke;
+.class-container {
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  min-height: calc(100vh - 53px);
+  background: whitesmoke;
 }
 
 /* ********************************* LEFT NAV CSS Start ********************************* */
 
-.left_nav{
-    display: flex;
-    flex-direction: column;
-    padding-left: 10px;
-    min-height: 100%;
-    min-width: 200px;
-    border-right: solid;
-    align-items: flex-start;
-    background-color: #234b6d;
+.left_nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  min-height: 100%;
+  min-width: 200px;
+  border-right: solid;
+  align-items: flex-start;
+  background-color: #234b6d;
 }
 
 .leftnav_content {
-    display: flex;
-    align-items: center;
-}
- .leftnav_icons {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    padding: 8px;
-    margin: 10px;
-    background-color: #55bbea;
+  display: flex;
+  align-items: center;
 }
 
-.leftnav_select{
+.leftnav_icons {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding: 8px;
+  margin: 10px;
+  background-color: #55bbea;
+}
+
+.leftnav_select {
   min-width: 90px;
 }
 
@@ -45,175 +46,183 @@
 }
 
 .subject_icons {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .subject_checkbox {
   margin-left: 15px;
 }
+
 /* For Styled Check-boxes */
+
 .styled-checkbox {
-    /* position: absolute; */
-    opacity: 0;
-  }
-  .styled-checkbox + label {
-    position: relative;
-    cursor: pointer;
-  }
-  .styled-checkbox + label:before {
-    content: "";
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: text-top;
-    width: 18px;
-    height: 18px;
-    background: white;
-  }
-  .styled-checkbox:hover + label:before {
-    background: #f35429;
-  }
-  .styled-checkbox:focus + label:before {
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-  }
-  .styled-checkbox:checked + label:before {
-    background: #f35429;
-  }
-  .styled-checkbox:disabled + label {
-    color: #b8b8b8;
-    cursor: auto;
-  }
-  .styled-checkbox:disabled + label:before {
-    box-shadow: none;
-    background: #ddd;
-  }
-  .styled-checkbox:checked + label:after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 9px;
-    background: white;
-    width: 2px;
-    height: 2px;
-    box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
+  /* position: absolute; */
+  opacity: 0;
+}
 
-  .unstyled {
-    padding: 0;
-    list-style-type: none;
-  }
-  
-  .title {
-    text-align: center;
-    color: #4571ec;
-  }
-  /* ********************************* LEFT NAV CSS End ********************************* */
+.styled-checkbox+label {
+  position: relative;
+  cursor: pointer;
+}
 
- /* ********************************* RIGHT NAV CSS Start ********************************* */
+.styled-checkbox+label:before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 18px;
+  height: 18px;
+  background: white;
+}
 
-  .right_nav{
-    position: relative;
-    min-height: 100%;
-    min-width: calc(100vw - 200px);
-    overflow-y: auto;
-    padding: 80px 270px 10px 270px;
-    }
-    
+.styled-checkbox:hover+label:before {
+  background: #f35429;
+}
+
+.styled-checkbox:focus+label:before {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+}
+
+.styled-checkbox:checked+label:before {
+  background: #f35429;
+}
+
+.styled-checkbox:disabled+label {
+  color: #b8b8b8;
+  cursor: auto;
+}
+
+.styled-checkbox:disabled+label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+
+.styled-checkbox:checked+label:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.unstyled {
+  padding: 0;
+  list-style-type: none;
+}
+
+.title {
+  text-align: center;
+  color: #4571ec;
+}
+
+/* ********************************* LEFT NAV CSS End ********************************* */
+
+/* ********************************* RIGHT NAV CSS Start ********************************* */
+
+.right_nav {
+  position: relative;
+  min-height: 100%;
+  min-width: calc(100vw - 200px);
+  overflow-y: auto;
+  padding: 80px 270px 10px 270px;
+}
 
 .sub-container-bg {
-    background-image: linear-gradient(-180deg,#00d2ff,#0c4a83 79%,#0a336c)!important;
+  background-image: linear-gradient(-180deg, #00d2ff, #0c4a83 79%, #0a336c)!important;
 }
 
-.subject-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    line-height: 1;
-    text-align: center;
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  line-height: 1;
+  text-align: center;
 }
 
-.subject{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.06);
-    height: 220px;
-    border-radius: 6px;
-    background: #fff;
-    margin: 10px 10px 10px 10px;
-    cursor: pointer;
+.subject {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.06);
+  height: 220px;
+  border-radius: 6px;
+  background: #fff;
+  margin: 10px 10px 10px 10px;
+  cursor: pointer;
 }
 
 .subject-icon {
-    display: flex;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,.08);
-    justify-content: center;
-    align-items: center;
-    margin-top: 16px;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, .08);
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
 }
 
 .icon-bg-yellow {
-    background: #f1c05b;
+  background: #f1c05b;
 }
 
-.icon-bg-reddish{
+.icon-bg-reddish {
   background: #eb4d67e0;
 }
 
-.icon-bg-blueish{
+.icon-bg-blueish {
   background: #638ce6e0;
 }
 
-.icon-bg-greenish{
+.icon-bg-greenish {
   background: #5be0a9ef;
 }
 
 .subject-name {
-    margin-top: 18px;
-    font-weight: 600;
-    color: #2d2d2d;
-    font-size: 20px;
+  margin-top: 18px;
+  font-weight: 600;
+  color: #2d2d2d;
+  font-size: 20px;
 }
 
-.video-detail{
-    color: #c8c8c8;
-    font-weight: 600;
-    font-size: 12px;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
+.video-detail {
+  color: #c8c8c8;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .dot {
-    height: 5px;
-    width: 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 5px;
-  }
+  height: 5px;
+  width: 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
 
-  .start-learning{
-    background: #f6f6f7;
-    padding: 13px;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
-    margin-top: 15px;
-    color: green;
-    margin-bottom: 0;
-    font-family: sans-serif;
-    font-weight: 600;
-  }
-
+.start-learning {
+  background: #f6f6f7;
+  padding: 13px;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-top: 15px;
+  color: green;
+  margin-bottom: 0;
+  font-family: sans-serif;
+  font-weight: 600;
+}
 
 /* ********************************* RIGHT NAV CSS End ********************************* */
-
