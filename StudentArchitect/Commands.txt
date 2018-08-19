@@ -27,3 +27,6 @@ Angular Commands :
 Create component : ng generate component <component_name>
 
 Create router : ng generate module app-routing --flat --module=app
+
+// This will create the service inside the services folder which is inside app folder
+Create service : ng g service services/subject 

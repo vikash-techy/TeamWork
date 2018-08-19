@@ -4,5 +4,6 @@ export class Subject {
     name: string;
     videosCount: number;
     goalsCount: number;
+    cssClassName: string;
     svgImage: SVG;
   }
