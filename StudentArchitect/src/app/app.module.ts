@@ -7,6 +7,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
+import { SubjectDetailComponent } from './subject-detail/subject-detail.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ClassComponent } from './class/class.component';
     HeaderComponent,
     PricingComponent,
     HomeComponent,
-    ClassComponent
+    ClassComponent,
+    SubjectDetailComponent
   ],
   imports: [
     BrowserModule,
