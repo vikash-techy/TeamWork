@@ -13,4 +13,8 @@ export class SubjectService {
   getSubjects(): Observable<Subject[]> {
     return of(SUBJECTS);
   }
+
+  getSubject(name : String):Observable<Subject> {
+    return of(SUBJECTS[0]);
+  }
 }

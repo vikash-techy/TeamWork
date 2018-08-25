@@ -1,3 +1,4 @@
+import { SubjectDetailComponent } from './subject-detail/subject-detail.component';
 import { PricingComponent } from './pricing/pricing.component';
 import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
@@ -8,7 +9,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'pricing', component: PricingComponent },
-  { path: 'class', component: ClassComponent }
+  { path: 'class', component: ClassComponent },
+  { path: 'subject-detail/:name', component: SubjectDetailComponent },
 ];
 
 @NgModule({

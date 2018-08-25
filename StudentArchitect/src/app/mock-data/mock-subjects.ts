@@ -42,10 +42,10 @@ const MOCK_SVG: SVG[] = [
 
 export const SUBJECTS: Subject[] = [
     { subjectId: 11, name: "Physics", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-yellow", svgImage: MOCK_SVG[0] },
-    { subjectId: 12, name: "Chemisyty", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-reddish", svgImage: MOCK_SVG[1] },
-    { subjectId: 13, name: "Mathematics", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-blueish", svgImage: MOCK_SVG[2] },
-    { subjectId: 14, name: "Biology", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-greenish", svgImage: MOCK_SVG[3] },
-    { subjectId: 15, name: "English", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-yellow", svgImage: MOCK_SVG[4] },
-    { subjectId: 16, name: "History", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-reddish", svgImage: MOCK_SVG[5] }
+    { subjectId: 12, name: "Chemisyty", goalsCount: 12, videosCount: 37, cssClassName:"icon-bg-reddish", svgImage: MOCK_SVG[1] },
+    { subjectId: 13, name: "Mathematics", goalsCount: 11, videosCount: 33, cssClassName:"icon-bg-blueish", svgImage: MOCK_SVG[2] },
+    { subjectId: 14, name: "Biology", goalsCount: 16, videosCount: 41, cssClassName:"icon-bg-greenish", svgImage: MOCK_SVG[3] },
+    { subjectId: 15, name: "English", goalsCount: 15, videosCount: 35, cssClassName:"icon-bg-yellow", svgImage: MOCK_SVG[4] },
+    { subjectId: 16, name: "History", goalsCount: 12, videosCount: 28, cssClassName:"icon-bg-reddish", svgImage: MOCK_SVG[5] }
 ];
 

@@ -65,7 +65,8 @@
   <!--Subject container-->
   <div class="right_nav sub-container-bg">
     <div class="subject-grid">
-      <a class="subject" *ngFor="let subject of subjects">
+      <div *ngFor="let subject of subjects">
+      <a class="subject"  routerLink="/subject-detail/{{subject.name}}">
         <div class="subject-icon {{subject.cssClassName}}">
           <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="36" width="36" [attr.viewBox]="subject.svgImage.viewBoxCoOrdinates"
             class="_3_28c">
@@ -74,12 +75,13 @@
         </div>
         <h2 class="subject-name">{{subject.name}}</h2>
         <div class="video-detail">
-          <div>{{subject.videosCount}}</div>
+          <div>{{subject.videosCount}} Videos</div>
           <div class="dot"></div>
-          <div>{{subject.goalsCount}}</div>
+          <div>{{subject.goalsCount}} Goals</div>
         </div>
         <div class="start-learning">START LEARNING</div>
       </a>
+    </div>
     </div>
   </div>
 </div>
