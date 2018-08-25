@@ -40,12 +40,16 @@ const MOCK_SVG: SVG[] = [
     }
 ];
 
-export const SUBJECTS: Subject[] = [
+export const MOCK_SUBJECTS: Subject[] = [
     { subjectId: 11, name: "Physics", goalsCount: 10, videosCount: 35, cssClassName:"icon-bg-yellow", classId:1, svgImage: MOCK_SVG[0] },
     { subjectId: 12, name: "Chemisyty", goalsCount: 12, videosCount: 37, cssClassName:"icon-bg-reddish", classId:1, svgImage: MOCK_SVG[1] },
-    { subjectId: 13, name: "Mathematics", goalsCount: 11, videosCount: 33, cssClassName:"icon-bg-blueish", classId:1, svgImage: MOCK_SVG[2] },
-    { subjectId: 14, name: "Biology", goalsCount: 16, videosCount: 41, cssClassName:"icon-bg-greenish", classId:1, svgImage: MOCK_SVG[3] },
-    { subjectId: 15, name: "English", goalsCount: 15, videosCount: 35, cssClassName:"icon-bg-yellow", classId:1, svgImage: MOCK_SVG[4] },
-    { subjectId: 16, name: "History", goalsCount: 12, videosCount: 28, cssClassName:"icon-bg-reddish", classId:1, svgImage: MOCK_SVG[5] }
+    { subjectId: 13, name: "Mathematics", goalsCount: 11, videosCount: 33, cssClassName:"icon-bg-blueish", classId:2, svgImage: MOCK_SVG[2] },
+    { subjectId: 14, name: "Biology", goalsCount: 16, videosCount: 41, cssClassName:"icon-bg-greenish", classId:2, svgImage: MOCK_SVG[3] },
+    { subjectId: 15, name: "English", goalsCount: 15, videosCount: 35, cssClassName:"icon-bg-yellow", classId:3, svgImage: MOCK_SVG[4] },
+    { subjectId: 16, name: "History", goalsCount: 12, videosCount: 28, cssClassName:"icon-bg-reddish", classId:4, svgImage: MOCK_SVG[5] },
+    { subjectId: 13, name: "Mathematics", goalsCount: 11, videosCount: 33, cssClassName:"icon-bg-blueish", classId:5, svgImage: MOCK_SVG[2] },
+    { subjectId: 14, name: "Biology", goalsCount: 16, videosCount: 41, cssClassName:"icon-bg-greenish", classId:5, svgImage: MOCK_SVG[3] },
+    { subjectId: 15, name: "English", goalsCount: 15, videosCount: 35, cssClassName:"icon-bg-yellow", classId:6, svgImage: MOCK_SVG[4] },
+    { subjectId: 16, name: "History", goalsCount: 12, videosCount: 28, cssClassName:"icon-bg-reddish", classId:6, svgImage: MOCK_SVG[5] }
 ];
 
