@@ -1,0 +1,8 @@
+Basic Angular Project Reference
+-------------------------------
+https://angular.io/tutorial
+
+CSS
+------------------------------
+Accordion :  https://dcrazed.net/html5-css3-accordion-tabs/
+Flex : https://css-tricks.com/snippets/css/a-guide-to-flexbox/
