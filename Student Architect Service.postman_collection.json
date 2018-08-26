@@ -1,0 +1,71 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Student Architect Service",
+		"_postman_id": "427bda1d-339b-34fa-e14e-fc2db45a821f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Board",
+			"request": {
+				"url": "http://localhost:8080/api/boards",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"ICSE\",\n\t\"description\":\"Indian Certificate of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Boards",
+			"request": {
+				"url": "http://localhost:8080/api/boards",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Board by Id",
+			"request": {
+				"url": "http://localhost:8080/api/boards/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
