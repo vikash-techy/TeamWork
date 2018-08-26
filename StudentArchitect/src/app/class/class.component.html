@@ -57,7 +57,7 @@
   <div class="right_nav sub-container-bg">
     <div class="subject-grid">
       <div *ngFor="let subject of subjects">
-      <a class="subject"  routerLink="/subject-detail/{{subject.name}}">
+      <a class="subject"  routerLink="/subject-detail/{{subject.subjectId}}">
         <div class="subject-icon {{subject.cssClassName}}">
           <svg fill="currentColor" preserveAspectRatio="xMidYMid meet" height="36" width="36" [attr.viewBox]="subject.svgImage.viewBoxCoOrdinates"
             class="_3_28c">

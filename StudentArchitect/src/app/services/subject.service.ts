@@ -15,8 +15,8 @@ export class SubjectService {
     return of(MOCK_SUBJECTS.filter(Subject => Subject.classId == classId));
   }
 
-  getSubject(name : String):Observable<Subject> {
-    return of(MOCK_SUBJECTS.find(subject => subject.name === name));
+  getSubject(id : Number):Observable<Subject> {
+    return of(MOCK_SUBJECTS.find(subject => subject.subjectId === id));
     // return of(SUBJECTS.find(class => class.na === name));
   }
 }
