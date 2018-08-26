@@ -23,8 +23,8 @@ import com.teamwork.stundent_architect_service.service.VideoService;
  *
  */
 @RestController
-@RequestMapping("/api/resources")
-public class ResourceController {
+@RequestMapping("/resources")
+public class ResourceController implements ApiController {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 

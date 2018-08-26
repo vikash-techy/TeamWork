@@ -28,9 +28,10 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-hateoas')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile('mysql:mysql-connector-java')
 	compile(group:'com.github.paulcwarren',name:'spring-content-fs-boot-starter',version:'0.2.0')
 	compile(group:'com.github.paulcwarren',name:'spring-content-rest-boot-starter',version:'0.2.0')
 	runtime('org.springframework.boot:spring-boot-devtools')
-	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
