@@ -16,7 +16,8 @@
   min-width: 200px;
   border-right: solid;
   align-items: flex-start;
-  background-color: #234b6d;
+  /* background-color: #000000d8; */
+  background-image: radial-gradient(#04396de8,#052149 )!important;
 }
 
 .leftnav_content {

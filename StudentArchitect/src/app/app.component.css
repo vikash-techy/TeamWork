@@ -1,11 +1,13 @@
 #main-component {
-    background: url("../images/SA_bck_image.jpg");
+    /* background: url("../images/SA_bck_image.jpg"); */
+    background-image: radial-gradient( #15658aa8 ,#0f2d58)!important;
+    /* background-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) !important; */
     /* height: 100%; */
     margin: 0;
     /* Center and scale the image nicely */
-    background-position: center;
+    /* background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 
     /* Set rules to fill background */
   min-height: 100%;
