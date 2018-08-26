@@ -1,0 +1,28 @@
+import { Section } from './../entities/section';
+export const MOCK_SECTIONS: Section[] = [
+    {sectionId:1, name: "section1", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 1},
+    {sectionId:2, name: "section2", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 1},
+    {sectionId:3, name: "section3", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 2},
+    {sectionId:4, name: "section4", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 2},
+    {sectionId:5, name: "section5", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 3},
+    {sectionId:6, name: "section6", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 3},
+    {sectionId:7, name: "section7", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 4},
+    {sectionId:8, name: "section8", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 4},
+    {sectionId:9, name: "section9", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 5},
+    {sectionId:10, name: "section10", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 5},
+    {sectionId:11, name: "section11", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 6},
+    {sectionId:12, name: "section12", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 6},
+    {sectionId:13, name: "section13", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 7},
+    {sectionId:14, name: "section14", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 7},
+    {sectionId:15, name: "section15", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 8},
+    {sectionId:16, name: "section16", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 8},
+    {sectionId:17, name: "section17", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 9},
+    {sectionId:18, name: "section18", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 9},
+    {sectionId:19, name: "section19", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 10},
+    {sectionId:20, name: "section20", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 10},
+    {sectionId:21, name: "section21", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 11},
+    {sectionId:22, name: "section22", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 11},
+    {sectionId:23, name: "section23", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 12},
+    {sectionId:24, name: "section24", description:"section1 Desc", videoPath:"https://www.youtube.com/watch?time_continue=487&v=6rLLZ_NSr8g", videoDuration:"10 min", chapterId: 12},
+    
+];
