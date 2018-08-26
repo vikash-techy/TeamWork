@@ -1,4 +1,35 @@
-.transition, p, ul li i:before, ul li i:after {
+.subject-detail{
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.chapter-panel{
+  background-color:  #fff;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  
+  padding: 15px 15px 0;
+  color: #686f7a;
+}
+
+.ch-num{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chapter-name {
+  padding-left: 10px;
+}
+
+.chapter-progress {
+  padding-right: 50px;
+}
+
+.transition, p,div, ul li i:before, ul li i:after {
     transition: all 0.25s ease-in-out;
   }
   
@@ -14,43 +45,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  
-  /* html {
-    width: 100%;
-    height: 100%;
-    perspective: 900;
-    overflow-y: scroll;
-    background-color: #dce7eb;
-    font-family: "Titillium Web", sans-serif;
-    color: rgba(48, 69, 92, 0.8);
-  }
-  
-  body {
-    min-height: 0;
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    margin: 90px 0;
-    transform: translate(-50%, 0);
-    box-shadow: 0 10px 0 0 #ff6873 inset;
-    background-color: #fefffa;
-    max-width: 450px;
-    padding: 30px;
-  }
-  @media (max-width: 550px) {
-    body {
-      box-sizing: border-box;
-      transform: translate(0, 0);
-      max-width: 100%;
-      min-height: 100%;
-      margin: 0;
-      left: 0;
-    }
-  } */
-  
-  h1, h2 {
-    color: #ff6873;
   }
   
   h1 {
@@ -72,7 +66,7 @@
     cursor: pointer;
   }
   
-  p {
+  p,div {
     color: rgba(48, 69, 92, 0.8);
     font-size: 17px;
     line-height: 26px;
@@ -98,7 +92,7 @@
     margin: 0;
     padding-bottom: 4px;
     padding-top: 18px;
-    border-top: 1px dotted #dce7eb;
+    /* border-top: 1px dotted #dce7eb; */
   }
   ul li:nth-of-type(1) {
     animation-delay: 0.5s;
@@ -115,7 +109,8 @@
   ul li i {
     position: absolute;
     transform: translate(-6px, 0);
-    margin-top: 16px;
+    margin-top: 23px;
+    margin-right: 15px;
     right: 0;
   }
   ul li i:before, ul li i:after {
@@ -140,6 +135,12 @@
     opacity: 0;
   }
   ul li input[type=checkbox]:checked ~ p {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    transform: translate(0, 50%);
+  }
+  ul li input[type=checkbox]:checked ~ .ch-section {
     margin-top: 0;
     max-height: 0;
     opacity: 0;
