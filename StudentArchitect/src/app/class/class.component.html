@@ -43,8 +43,8 @@
       </div>
       <div class="subject_checkbox">
         <ul class="unstyled centered">
-          <li *ngFor="let subject of subjects">
-            <input class="styled-checkbox" id="styled-checkbox-{{subject.subjectId}}" type="checkbox" value="value1">
+          <li *ngFor="let subject of displaySubjects">
+            <input class="styled-checkbox" id="styled-checkbox-{{subject.subjectId}}" type="checkbox" [(ngModel)]="subject.isSelected" value="{{subject.subjectId}}" (change)="getSubject()">
             <label for="styled-checkbox-{{subject.subjectId}}">{{subject.name}}</label>
           </li>
         </ul>

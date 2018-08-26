@@ -7,4 +7,5 @@ export class Subject {
   cssClassName: string;
   svgImage: SVG;
   classId: number;
+  isSelected: boolean;
 }
