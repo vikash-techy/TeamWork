@@ -50,7 +50,27 @@
 		{
 			"name": "Get Board by Id",
 			"request": {
-				"url": "http://localhost:8080/api/boards/1",
+				"url": "http://localhost:8080/api/boards/id/13",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Board by Name",
+			"request": {
+				"url": "http://localhost:8080/api/boards/name/cbse",
 				"method": "GET",
 				"header": [
 					{
@@ -62,6 +82,46 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Board",
+			"request": {
+				"url": "http://localhost:8080/api/boards/13",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Board",
+			"request": {
+				"url": "http://localhost:8080/api/boards/13",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"UPSE\",\n\t\"description\":\"Utter Pradesh Board of Secondary Education\"\n}"
 				},
 				"description": ""
 			},
