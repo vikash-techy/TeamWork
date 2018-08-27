@@ -1,21 +1,42 @@
 package com.teamwork.stundent_architect_service.exception;
 
-import java.util.Map;
+import java.util.Date;
 
 public class ErrorJson {
 
-    public Integer status;
-    public String error;
-    public String message;
-    public String timeStamp;
-    public String trace;
+	private Date timestamp;
+	private String message;
+	private String details;
 
-    public ErrorJson(int status, Map<String, Object> errorAttributes) {
-        this.status = status;
-        this.error = (String) errorAttributes.get("error");
-        this.message = (String) errorAttributes.get("message");
-        this.timeStamp = errorAttributes.get("timestamp").toString();
-        this.trace = (String) errorAttributes.get("trace");
-    }
+	public ErrorJson(Date timestamp, String message, String details) {
+		super();
+		this.timestamp = timestamp;
+		this.message = message;
+		this.details = details;
+	}
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
 
 }
