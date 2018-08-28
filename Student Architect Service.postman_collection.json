@@ -8,124 +8,236 @@
 	},
 	"item": [
 		{
-			"name": "Add Board",
-			"request": {
-				"url": "http://localhost:8080/api/boards",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Board",
+			"description": "",
+			"item": [
+				{
+					"name": "Add Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"ICSE\",\n\t\"description\":\"Indian Certificate of Secondary Education\"\n}"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"ICSE\",\n\t\"description\":\"Indian Certificate of Secondary Education\"\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Get All Boards",
+					"request": {
+						"url": "http://localhost:8080/api/boards",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Board by Id",
+					"request": {
+						"url": "http://localhost:8080/api/boards/id/10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Board by Name",
+					"request": {
+						"url": "http://localhost:8080/api/boards/name/cbse",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards/13",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards/13",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"UPSE\",\n\t\"description\":\"Utter Pradesh Board of Secondary Education\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Get All Boards",
-			"request": {
-				"url": "http://localhost:8080/api/boards",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Standard",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Standards",
+					"request": {
+						"url": "http://localhost:8080/api/standards",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get Board by Id",
-			"request": {
-				"url": "http://localhost:8080/api/boards/id/13",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+				{
+					"name": "Get All Standards By Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards/10/standards",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Get Board by Name",
-			"request": {
-				"url": "http://localhost:8080/api/boards/name/cbse",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+				{
+					"name": "Add Standard To  Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards/10/standards",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"10\",\n\t\"description\":\"10th Standard\"\n}"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Update Board",
-			"request": {
-				"url": "http://localhost:8080/api/boards/13",
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+				{
+					"name": "Update Standard By Board",
+					"request": {
+						"url": "http://localhost:8080/api/boards/10/standards/52",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"9\",\n\t\"description\":\"CBSE 9th Standard\"\n}"
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Board",
-			"request": {
-				"url": "http://localhost:8080/api/boards/13",
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":\"UPSE\",\n\t\"description\":\"Utter Pradesh Board of Secondary Education\"\n}"
-				},
-				"description": ""
-			},
-			"response": []
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

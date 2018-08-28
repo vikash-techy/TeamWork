@@ -3,28 +3,32 @@
  */
 package com.teamwork.stundent_architect_service.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.hateoas.ResourceSupport;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -32,16 +36,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@Table(name = "Board")
+@Table(name = "standard")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class Board extends ResourceSupport {
+public class Standard extends ResourceSupport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence-generator")
-	@SequenceGenerator(name = "sequence-generator", sequenceName = "board_sequence", initialValue = 1)
-	@Column(name = "board_id")
-	private Long boardId;
+	@SequenceGenerator(name = "sequence-generator", sequenceName = "standard_sequence", initialValue = 1)
+	@Column(name = "standard_id")
+	private Long standardId;
 
 	@Column(name = "name")
 	@NotBlank
@@ -49,6 +53,13 @@ public class Board extends ResourceSupport {
 
 	@Column(name = "description")
 	private String description;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "board_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	// @JsonIgnore
+	@JsonBackReference
+	private Board board;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -59,24 +70,13 @@ public class Board extends ResourceSupport {
 	@Temporal(TemporalType.TIMESTAMP)
 	@LastModifiedDate
 	private Date updatedAt;
-	
-	@OneToMany(mappedBy = "board")
-	private List<Standard> standards = new ArrayList<Standard>();
 
-	public List<Standard> getStandards() {
-		return standards;
+	public Long getStandardId() {
+		return standardId;
 	}
 
-	public void setStandards(List<Standard> standards) {
-		this.standards = standards;
-	}
-
-	public Long getBoardId() {
-		return boardId;
-	}
-
-	public void setBoardId(Long boardId) {
-		this.boardId = boardId;
+	public void setStandardId(Long standardId) {
+		this.standardId = standardId;
 	}
 
 	public String getName() {
@@ -93,6 +93,14 @@ public class Board extends ResourceSupport {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public void setBoard(Board board) {
+		this.board = board;
 	}
 
 	public Date getCreatedAt() {
@@ -113,7 +121,8 @@ public class Board extends ResourceSupport {
 
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", name=" + name + ", description=" + description + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Standard [standardId=" + standardId + ", name=" + name + ", description=" + description + ", board="
+				+ board + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
+
 }
