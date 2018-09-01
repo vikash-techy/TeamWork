@@ -9,10 +9,13 @@
   background-color:  #fff;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  
-  padding: 15px 15px 0;
-  color: #686f7a;
+  padding: 0px 50px 0 20px;color: #686f7a;
+  margin-bottom: 25px;
+}
+
+.chapter-panel:after, .panel-body:before {
+  content: " ";
+  display: table;
 }
 
 .ch-num{
@@ -21,13 +24,6 @@
   flex-wrap: wrap;
 }
 
-.chapter-name {
-  padding-left: 10px;
-}
-
-.chapter-progress {
-  padding-right: 50px;
-}
 
 .transition, p,div, ul li i:before, ul li i:after {
     transition: all 0.25s ease-in-out;
@@ -88,8 +84,8 @@
   }
   ul li {
     position: relative;
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: 0; */
     padding-bottom: 4px;
     padding-top: 18px;
     /* border-top: 1px dotted #dce7eb; */

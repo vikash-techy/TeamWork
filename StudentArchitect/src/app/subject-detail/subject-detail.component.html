@@ -16,19 +16,27 @@
         to save myself some headaches. I haven't quite gotten the hang of Slim for compiling into HTML, but someday I'll
         use it since its syntax compliments that of SASS. Regardless, this could all be done in plain HTML and CSS.</div>
     </li>
-    <li>
+    <li class="chapter-panel">
       <input type="checkbox" checked>
       <i></i>
-      <h2>How it Works</h2>
+      <div class="ch-num">
+          <span class="chapter-name">Chapter: 2</span>
+          <span class="chapter-progress">7 / 16</span>
+        </div>
+        <div><h3>How it Works</h3></div>
       <div class="ch-section">Using the sibling and checked selectors, we can determine the styling of sibling elements based on the checked state
         of the checkbox input element. One use, as demonstrated here, is an entirely CSS and HTML accordion element. Media
         queries are used to make the element responsive to different screen sizes.</div>
     </li>
-    <li>
+    <li class="chapter-panel"> 
       <input type="checkbox" checked>
       <i></i>
-      <h2>Points of Interest</h2>
-      <p>By making the open state default for when :checked isn't detected, we can make this system accessable for browsers
+      <div class="ch-num">
+          <span class="chapter-name">Chapter: 1</span>
+          <span class="chapter-progress">2 / 10</span>
+        </div>
+        <div><h3>Points of Interest</h3></div>
+      <p class="ch-section">By making the open state default for when :checked isn't detected, we can make this system accessable for browsers
         that don't recognize :checked. The fallback is simply an open accordion. The accordion can be manipulated with Javascript
         (if needed) by changing the "checked" property of the input element.</p>
     </li>
