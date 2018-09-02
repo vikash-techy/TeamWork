@@ -33,15 +33,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@Table(name = "standard")
+@Table(name = "chapter")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class Standard extends ResourceSupport {
+public class Chapter extends ResourceSupport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "standard_id")
-	private Long standardId;
+	@Column(name = "chapter_id")
+	private Long chapterId;
 
 	@Column(name = "name")
 	@NotBlank
@@ -51,9 +51,23 @@ public class Standard extends ResourceSupport {
 	private String description;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "board_id")
+	@JoinColumn(name = "subject_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Board board;
+	private Subject subject;
+
+	@ManyToOne
+	@JoinColumn(name = "instructor_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Instructor instructor;
+
+	@Column(name = "is_mandatory")
+	private boolean isMandatory;
+
+	@Column(name = "is_free")
+	private boolean isFree;
+
+	@Column(name = "time_required_in_sec")
+	private Long timeRequiredInSecs;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,12 +79,12 @@ public class Standard extends ResourceSupport {
 	@LastModifiedDate
 	private Date updatedAt;
 
-	public Long getStandardId() {
-		return standardId;
+	public Long getChapterId() {
+		return chapterId;
 	}
 
-	public void setStandardId(Long standardId) {
-		this.standardId = standardId;
+	public void setChapterId(Long chapterId) {
+		this.chapterId = chapterId;
 	}
 
 	public String getName() {
@@ -89,12 +103,44 @@ public class Standard extends ResourceSupport {
 		this.description = description;
 	}
 
-	public Board getBoard() {
-		return board;
+	public Subject getSubject() {
+		return subject;
 	}
 
-	public void setBoard(Board board) {
-		this.board = board;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+	public boolean isMandatory() {
+		return isMandatory;
+	}
+
+	public void setMandatory(boolean isMandatory) {
+		this.isMandatory = isMandatory;
+	}
+
+	public boolean isFree() {
+		return isFree;
+	}
+
+	public void setFree(boolean isFree) {
+		this.isFree = isFree;
+	}
+
+	public Long getTimeRequiredInSecs() {
+		return timeRequiredInSecs;
+	}
+
+	public void setTimeRequiredInSecs(Long timeRequiredInSecs) {
+		this.timeRequiredInSecs = timeRequiredInSecs;
 	}
 
 	public Date getCreatedAt() {
@@ -115,8 +161,10 @@ public class Standard extends ResourceSupport {
 
 	@Override
 	public String toString() {
-		return "Standard [standardId=" + standardId + ", name=" + name + ", description=" + description + ", board="
-				+ board + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Chapter [chapterId=" + chapterId + ", name=" + name + ", description=" + description + ", subject="
+				+ subject + ", instructor=" + instructor + ", isMandatory=" + isMandatory + ", isFree=" + isFree
+				+ ", timeRequiredInSecs=" + timeRequiredInSecs + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]";
 	}
 
 }

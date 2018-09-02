@@ -6,8 +6,8 @@ package com.teamwork.stundent_architect_service.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import com.teamwork.stundent_architect_service.model.Board;
 import com.teamwork.stundent_architect_service.model.Standard;
 
 /**
@@ -16,5 +16,6 @@ import com.teamwork.stundent_architect_service.model.Standard;
  */
 public interface StandardRespository extends JpaRepository<Standard, Long> {
 
-	public List<Standard> findByBoard(Board board);
+	@Query(value = "select * from standard where board_id = ?1 ", nativeQuery = true)
+	public List<Standard> findByBoard(Long boardId);
 }

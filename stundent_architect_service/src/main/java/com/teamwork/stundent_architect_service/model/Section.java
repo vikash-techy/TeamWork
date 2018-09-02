@@ -33,15 +33,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@Table(name = "standard")
+@Table(name = "section")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class Standard extends ResourceSupport {
+public class Section extends ResourceSupport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "standard_id")
-	private Long standardId;
+	@Column(name = "section_id")
+	private Long sectionId;
 
 	@Column(name = "name")
 	@NotBlank
@@ -51,9 +51,28 @@ public class Standard extends ResourceSupport {
 	private String description;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "board_id")
+	@JoinColumn(name = "chapter_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Board board;
+	private Chapter chapter;
+
+	@ManyToOne
+	@JoinColumn(name = "instructor_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Instructor instructor;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "content_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Content content;
+
+	@Column(name = "is_mandatory")
+	private boolean isMandatory;
+
+	@Column(name = "is_free")
+	private boolean isFree;
+
+	@Column(name = "time_required_in_sec")
+	private Long timeRequiredInSecs;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -65,12 +84,12 @@ public class Standard extends ResourceSupport {
 	@LastModifiedDate
 	private Date updatedAt;
 
-	public Long getStandardId() {
-		return standardId;
+	public Long getSectionId() {
+		return sectionId;
 	}
 
-	public void setStandardId(Long standardId) {
-		this.standardId = standardId;
+	public void setSectionId(Long sectionId) {
+		this.sectionId = sectionId;
 	}
 
 	public String getName() {
@@ -89,12 +108,52 @@ public class Standard extends ResourceSupport {
 		this.description = description;
 	}
 
-	public Board getBoard() {
-		return board;
+	public Chapter getChapter() {
+		return chapter;
 	}
 
-	public void setBoard(Board board) {
-		this.board = board;
+	public void setChapter(Chapter chapter) {
+		this.chapter = chapter;
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
+	}
+
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
+	public boolean isMandatory() {
+		return isMandatory;
+	}
+
+	public void setMandatory(boolean isMandatory) {
+		this.isMandatory = isMandatory;
+	}
+
+	public boolean isFree() {
+		return isFree;
+	}
+
+	public void setFree(boolean isFree) {
+		this.isFree = isFree;
+	}
+
+	public Long getTimeRequiredInSecs() {
+		return timeRequiredInSecs;
+	}
+
+	public void setTimeRequiredInSecs(Long timeRequiredInSecs) {
+		this.timeRequiredInSecs = timeRequiredInSecs;
 	}
 
 	public Date getCreatedAt() {
@@ -115,8 +174,10 @@ public class Standard extends ResourceSupport {
 
 	@Override
 	public String toString() {
-		return "Standard [standardId=" + standardId + ", name=" + name + ", description=" + description + ", board="
-				+ board + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Section [sectionId=" + sectionId + ", name=" + name + ", description=" + description + ", chapter="
+				+ chapter + ", instructor=" + instructor + ", content=" + content + ", isMandatory=" + isMandatory
+				+ ", isFree=" + isFree + ", timeRequiredInSecs=" + timeRequiredInSecs + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
 	}
 
 }

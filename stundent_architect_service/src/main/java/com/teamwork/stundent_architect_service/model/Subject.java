@@ -8,14 +8,19 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,15 +33,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@Table(name = "Board")
+@Table(name = "subject")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class Board extends ResourceSupport {
-
+public class Subject extends ResourceSupport {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "board_id")
-	private Long boardId;
+	@Column(name = "subject_id")
+	private Long subjectId;
 
 	@Column(name = "name")
 	@NotBlank
@@ -44,6 +49,16 @@ public class Board extends ResourceSupport {
 
 	@Column(name = "description")
 	private String description;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "standard_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Standard standard;
+
+	@ManyToOne
+	@JoinColumn(name = "instructor_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Instructor instructor;
 
 	@Column(nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -55,12 +70,12 @@ public class Board extends ResourceSupport {
 	@LastModifiedDate
 	private Date updatedAt;
 
-	public Long getBoardId() {
-		return boardId;
+	public Long getSubjectId() {
+		return subjectId;
 	}
 
-	public void setBoardId(Long boardId) {
-		this.boardId = boardId;
+	public void setSubjectId(Long subjectId) {
+		this.subjectId = subjectId;
 	}
 
 	public String getName() {
@@ -77,6 +92,22 @@ public class Board extends ResourceSupport {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Standard getStandard() {
+		return standard;
+	}
+
+	public void setStandard(Standard standard) {
+		this.standard = standard;
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 
 	public Date getCreatedAt() {
@@ -97,7 +128,9 @@ public class Board extends ResourceSupport {
 
 	@Override
 	public String toString() {
-		return "Board [boardId=" + boardId + ", name=" + name + ", description=" + description + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Subject [subjectId=" + subjectId + ", name=" + name + ", description=" + description + ", standard="
+				+ standard + ", instructor=" + instructor + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]";
 	}
+
 }

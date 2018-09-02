@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamwork.stundent_architect_service.exception.ResourceNotFoundException;
-import com.teamwork.stundent_architect_service.model.Board;
 import com.teamwork.stundent_architect_service.model.Standard;
 import com.teamwork.stundent_architect_service.repository.BoardRespository;
 import com.teamwork.stundent_architect_service.repository.StandardRespository;
@@ -83,10 +82,8 @@ public class StandardController implements ApiController {
 
 	@GetMapping("/boards/{boardId}/standards")
 	public Resources<Standard> getAllStandardsByBoard(@PathVariable Long boardId) {
-		Board board = boardRepository.findById(boardId)
-				.orElseThrow(() -> new ResourceNotFoundException("Board", "Id", boardId));
 
-		final List<Standard> standards = standardRespository.findByBoard(board);
+		final List<Standard> standards = standardRespository.findByBoard(boardId);
 
 		for (final Standard standard : standards) {
 			Link selfLink = linkTo(methodOn(StandardController.class).getStandard(standard.getStandardId()))
@@ -115,13 +112,8 @@ public class StandardController implements ApiController {
 		return resource;
 	}
 
-	@PutMapping("/boards/{boardId}/standards/{standardId}")
-	public Resource<Standard> updateComment(@PathVariable Long boardId, @PathVariable Long standardId,
-			@Valid @RequestBody Standard newStandard) {
-		if (!boardRepository.existsById(boardId)) {
-			throw new ResourceNotFoundException("Board ", "Id", boardId);
-		}
-
+	@PutMapping("standards/{standardId}")
+	public Resource<Standard> updateStandard(@PathVariable Long standardId, @Valid @RequestBody Standard newStandard) {
 		Standard standard = standardRespository.findById(standardId)
 				.orElseThrow(() -> new ResourceNotFoundException("Standard", "Id", standardId));
 		standard.setName(newStandard.getName());
@@ -131,17 +123,14 @@ public class StandardController implements ApiController {
 		Link selfLink = linkTo(methodOn(StandardController.class).getStandard(standardId)).withSelfRel();
 
 		Resource<Standard> resource = new Resource<Standard>(standard, selfLink);
-		resource.add(linkTo(methodOn(BoardController.class).getBoard(boardId)).withRel("board"));
+		resource.add(
+				linkTo(methodOn(BoardController.class).getBoard(standard.getBoard().getBoardId())).withRel("board"));
 
 		return resource;
 	}
 
-	@DeleteMapping("/boards/{boardId}/standards/{standardId}")
-	public ResponseEntity<?> deleteComment(@PathVariable Long boardId, @PathVariable Long standardId) {
-		if (!boardRepository.existsById(boardId)) {
-			throw new ResourceNotFoundException("Board ", "Id", boardId);
-		}
-
+	@DeleteMapping("standards/{standardId}")
+	public ResponseEntity<?> deleteStandard(@PathVariable Long standardId) {
 		return standardRespository.findById(standardId).map(standard -> {
 			standardRespository.delete(standard);
 			return ResponseEntity.ok().build();
