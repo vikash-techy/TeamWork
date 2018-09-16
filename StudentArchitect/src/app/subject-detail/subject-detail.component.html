@@ -1,47 +1,56 @@
 <div class="subject-detail" *ngIf="subject">
   subject-detail works! {{ subject.name | uppercase }}
 
-  
-  <ul class="chapter-content">
-    <li class="chapter-panel">
-      <input type="checkbox" checked>
-      <i></i>
-      <div class="ch-num">
-        <span class="chapter-name">Chapter: 1</span>
-        <span class="chapter-progress">5 / 12</span>
-      </div>
-      <div><h3>Introduction</h3></div>
+  <div class="chapter-section-content">
+    <div class="chapter-section-panel">
+      <ul class="chapter-content">
+        <li *ngFor="let chapter of chapters" class="chapter-panel">
+
+          <input type="checkbox" checked>
+          <i></i>
+          <div class="ch-num">
+            <span class="chapter-name">Chapter: {{chapter.chapterNo}}</span>
+            <span class="chapter-progress">5 / {{chapter.numberOfSections}}</span>
+          </div>
+          <div style="padding-left: 20px;">
+            <h3>{{chapter.name}}</h3>
+          </div>
+          <div class="ch-section">
+            <ul>
+
+              <li *ngFor="let section of chapter.sections" class="section-panel">
+                <a class="section-detail" (click)="setSectionId(section.sectionId)">
+                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    width="20px" height="20px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve"
+                    class="play-icon">
+                    <g>
+                      <g id="play-circle-outline">
+                        <path d="M204,369.75L357,255L204,140.25V369.75z M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255
+                   S395.25,0,255,0z M255,459c-112.2,0-204-91.8-204-204S142.8,51,255,51s204,91.8,204,204S367.2,459,255,459z"
+                        />
+                      </g>
+                    </g>
+                  </svg>
+
+                  <span class="curriculum-item--title--3etrQ"> 1. {{section.name}}</span>
+
+                  <span class="curriculum-item--duration--1OEOp">2:00</span>
+
+                </a>
+              </li>
+
+
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    <!--Video Player-->
+    <div class="video-content-panel" *ngIf="selectedSectionId">
       
-      <div class="ch-section">This page was written in HTML and CSS. The CSS was compiled from SASS. I used Normalize as my CSS reset and -prefix-free
-        to save myself some headaches. I haven't quite gotten the hang of Slim for compiling into HTML, but someday I'll
-        use it since its syntax compliments that of SASS. Regardless, this could all be done in plain HTML and CSS.</div>
-    </li>
-    <li class="chapter-panel">
-      <input type="checkbox" checked>
-      <i></i>
-      <div class="ch-num">
-          <span class="chapter-name">Chapter: 2</span>
-          <span class="chapter-progress">7 / 16</span>
-        </div>
-        <div><h3>How it Works</h3></div>
-      <div class="ch-section">Using the sibling and checked selectors, we can determine the styling of sibling elements based on the checked state
-        of the checkbox input element. One use, as demonstrated here, is an entirely CSS and HTML accordion element. Media
-        queries are used to make the element responsive to different screen sizes.</div>
-    </li>
-    <li class="chapter-panel"> 
-      <input type="checkbox" checked>
-      <i></i>
-      <div class="ch-num">
-          <span class="chapter-name">Chapter: 1</span>
-          <span class="chapter-progress">2 / 10</span>
-        </div>
-        <div><h3>Points of Interest</h3></div>
-      <p class="ch-section">By making the open state default for when :checked isn't detected, we can make this system accessable for browsers
-        that don't recognize :checked. The fallback is simply an open accordion. The accordion can be manipulated with Javascript
-        (if needed) by changing the "checked" property of the input element.</p>
-    </li>
-  </ul>
+      <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"   ></iframe>
 
-
-
+    </div>
+  </div>
 </div>

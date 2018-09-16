@@ -22,6 +22,7 @@ export class SubjectDetailComponent implements OnInit {
   sections: Section[];
   selectedSubjectId: number;
   selectedSectionId: number;
+  selectedSection: Section;
   
 
   constructor (
@@ -34,6 +35,7 @@ export class SubjectDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getSubject();
+    this.getChapters();
   }
 
   getSubject(): void {
@@ -48,5 +50,12 @@ export class SubjectDetailComponent implements OnInit {
 
   getSections(): void {
     this.sectionService.getSections(this.selectedSectionId).subscribe(sections => this.sections = sections);
+  }
+
+  setSectionId(sectionId) : void {
+    this.selectedSectionId = sectionId;console.log('selectedSectionId='+this.selectedSectionId);
+    this.sectionService.getSections(this.selectedSectionId).subscribe(sections => {this.sections = sections;
+      this.selectedSection = this.sections[0];});
+    console.log('selectedSection='+this.selectedSection);
   }
 }
