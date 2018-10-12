@@ -19,7 +19,6 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "Board")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class Board extends ResourceSupport {
+public class Board {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

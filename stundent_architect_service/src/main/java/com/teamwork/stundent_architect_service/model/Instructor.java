@@ -20,7 +20,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -32,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "instructor")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true, ignoreUnknown = true)
-public class Instructor extends ResourceSupport {
+public class Instructor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

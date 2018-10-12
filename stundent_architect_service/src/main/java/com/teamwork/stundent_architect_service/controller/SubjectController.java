@@ -3,9 +3,7 @@
  */
 package com.teamwork.stundent_architect_service.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,10 +12,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +36,6 @@ import com.teamwork.stundent_architect_service.repository.SubjectRepository;
  *
  */
 @RestController
-@ExposesResourceFor(Standard.class)
 public class SubjectController implements ApiController {
 
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -57,78 +50,52 @@ public class SubjectController implements ApiController {
 	private InstructorRepository instructorRepository;
 
 	@GetMapping("/subjects")
-	public Resources<Subject> getAll() {
+	public Collection<Subject> getAll() {
 		final List<Subject> subjects = subjectRespository.findAll();
-
-		for (final Subject subject : subjects) {
-			Link selfLink = linkTo(methodOn(SubjectController.class).getSubject(subject.getSubjectId())).withSelfRel();
-			subject.add(selfLink);
-		}
-
-		Link standardLink = linkTo(methodOn(SubjectController.class).getAll()).withSelfRel();
-		Resources<Subject> resources = new Resources<Subject>(subjects, standardLink);
-
-		return resources;
+		if(subjects.isEmpty())
+			throw new ResourceNotFoundException("Subjects", "", null);
+		
+		return subjects;
 	}
 
 	@RequestMapping("/subjects/id/{id}")
-	public Resource<Subject> getSubject(@PathVariable Long id) {
+	public Subject getSubject(@PathVariable Long id) {
 		Optional<Subject> subject = subjectRespository.findById(id);
 		if (!subject.isPresent())
 			throw new ResourceNotFoundException("Subject", "Id", id);
 
-		Resource<Subject> resource = new Resource<Subject>(subject.get());
-		resource.add(linkTo(methodOn(SubjectController.class).getSubject(id)).withSelfRel());
-		resource.add(linkTo(methodOn(StandardController.class).getStandard(subject.get().getStandard().getStandardId()))
-				.withRel("standard"));
-
-		return resource;
+		return subject.get();
 	}
 
 	@GetMapping("/standards/{standardId}/subjects")
-	public Resources<Subject> getAllSubjectsByStandard(@PathVariable Long standardId) {
-
+	public Collection<Subject> getAllSubjectsByStandard(@PathVariable Long standardId) {
 		final List<Subject> subjects = subjectRespository.findByStandard(standardId);
-
-		for (final Subject subject : subjects) {
-			Link selfLink = linkTo(methodOn(StandardController.class).getStandard(subject.getSubjectId()))
-					.withSelfRel();
-			subject.add(selfLink);
-		}
-
-		Link boardLink = linkTo(methodOn(StandardController.class).getStandard(standardId)).withRel("standard");
-		Resources<Subject> resources = new Resources<Subject>(subjects, boardLink);
-
-		return resources;
+		if (subjects.isEmpty())
+			throw new ResourceNotFoundException("Subjects for Standard", "Id", standardId);
+		
+		return subjects;
 	}
 
 	@PostMapping(value = { "/standards/{standardId}/subjects", "/standards/{standardId}/subjects/{instructorId}" })
-	public Resource<Subject> addSubject(@PathVariable Long standardId, @PathVariable Optional<Long> instructorId,
+	public Subject addSubject(@PathVariable Long standardId, @PathVariable Optional<Long> instructorId,
 			@Valid @RequestBody Subject subject) {
+		Standard standard = standardRespository.findById(standardId)
+				.orElseThrow(() -> new ResourceNotFoundException("Subject for Standard", "Id", standardId));
+		
+		subject.setStandard(standard);
+		if (instructorId.isPresent()) {
+			Instructor instructor = instructorRepository.findById(instructorId.get())
+					.orElseThrow(() -> new ResourceNotFoundException("Instructor", "Id", instructorId));
+			subject.setInstructor(instructor);
+		}
+		Subject newSubject = subjectRespository.save(subject);
 
-		standardRespository.findById(standardId).map(standard -> {
-			subject.setStandard(standard);
-			if (instructorId.isPresent()) {
-				Instructor instructor = instructorRepository.findById(instructorId.get())
-						.orElseThrow(() -> new ResourceNotFoundException("Instructor", "Id", instructorId));
-				subject.setInstructor(instructor);
-			}
-			return subjectRespository.save(subject);
-		});
-
-		Link selfLink = linkTo(methodOn(SubjectController.class).getSubject(subject.getSubjectId())).withSelfRel();
-
-		Resource<Subject> resource = new Resource<Subject>(subject, selfLink);
-		resource.add(linkTo(methodOn(StandardController.class).getStandard(subject.getStandard().getStandardId()))
-				.withRel("standard"));
-
-		return resource;
+		return newSubject;
 	}
 
-	@PutMapping(value = { "/subjects/id/{subjectId}", "/subjects/id/{subjectId}/{instructorId}" })
-	public Resource<Subject> updateSubject(@PathVariable Long subjectId, @PathVariable Optional<Long> instructorId,
+	@PutMapping(value = { "/subjects/id/{subjectId}", "/subjects/id/{subjectId}/instructors/{instructorId}" })
+	public Subject updateSubject(@PathVariable Long subjectId, @PathVariable Optional<Long> instructorId,
 			@Valid @RequestBody Subject newSubject) {
-
 		Subject subject = subjectRespository.findById(subjectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Subject", "Id", subjectId));
 
@@ -141,14 +108,7 @@ public class SubjectController implements ApiController {
 		}
 
 		subject = subjectRespository.save(subject);
-
-		Link selfLink = linkTo(methodOn(SubjectController.class).getSubject(subjectId)).withSelfRel();
-
-		Resource<Subject> resource = new Resource<Subject>(subject, selfLink);
-		resource.add(linkTo(methodOn(StandardController.class).getStandard(subject.getStandard().getStandardId()))
-				.withRel("standard"));
-
-		return resource;
+		return subject;
 	}
 
 	@DeleteMapping("/subjects/id/{subjectId}")
@@ -159,22 +119,16 @@ public class SubjectController implements ApiController {
 		}).orElseThrow(() -> new ResourceNotFoundException("Subject", "Id", subjectId));
 	}
 
-	@PatchMapping("/subjects/id/{subjectId}/{instructorId}")
-	public Resource<Subject> updateInstructor(@PathVariable Long subjectId, @PathVariable Long instructorId) {
+	@PatchMapping("/subjects/id/{subjectId}/instructors/{instructorId}")
+	public Subject updateInstructor(@PathVariable Long subjectId, @PathVariable Long instructorId) {
 		Subject subject = subjectRespository.findById(subjectId)
 				.orElseThrow(() -> new ResourceNotFoundException("Subject", "Id", subjectId));
 
 		Instructor instructor = instructorRepository.findById(instructorId)
 				.orElseThrow(() -> new ResourceNotFoundException("Instructor", "Id", instructorId));
-		subject.setInstructor(instructor);
 		
+		subject.setInstructor(instructor);
 		subject = subjectRespository.save(subject);
-
-		Link selfLink = linkTo(methodOn(SubjectController.class).getSubject(subjectId)).withSelfRel();
-		Resource<Subject> resource = new Resource<Subject>(subject, selfLink);
-		resource.add(linkTo(methodOn(StandardController.class).getStandard(subject.getStandard().getStandardId()))
-				.withRel("standard"));
-
-		return resource;
+		return subject;
 	}
 }

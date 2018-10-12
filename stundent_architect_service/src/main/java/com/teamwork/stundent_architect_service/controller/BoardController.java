@@ -3,9 +3,7 @@
  */
 package com.teamwork.stundent_architect_service.controller;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,74 +38,48 @@ public class BoardController implements ApiController {
 	private BoardRespository boardRespository;
 
 	@GetMapping("/boards")
-	public Resources<Board> getAll() {
+	public Collection<Board> getAll() {
 		final List<Board> boards = boardRespository.findAll();
-
-		for (final Board board : boards) {
-			Link selfLink = linkTo(methodOn(BoardController.class).getBoard(board.getBoardId())).withSelfRel();
-			board.add(selfLink);
-		}
-
-		Link allBoardsLink = linkTo(methodOn(BoardController.class).getAll()).withSelfRel();
-		Resources<Board> resources = new Resources<Board>(boards, allBoardsLink);
-
-		return resources;
+		if (boards.isEmpty())
+			throw new ResourceNotFoundException("Boards", "", null);
+		
+		return boards;
 	}
 
 	@RequestMapping("/boards/id/{id}")
-	public Resource<Board> getBoard(@PathVariable Long id) {
+	public Board getBoard(@PathVariable Long id) {
 		Optional<Board> board = boardRespository.findById(id);
 		if (!board.isPresent())
 			throw new ResourceNotFoundException("Board", "Id", id);
 
-		Resource<Board> resource = new Resource<Board>(board.get());
-		resource.add(linkTo(methodOn(BoardController.class).getBoard(board.get().getBoardId())).withSelfRel());
-		resource.add(linkTo(methodOn(this.getClass()).getAll()).withRel("all-boards"));
-
-		return resource;
+		return board.get();
 	}
 
 	@RequestMapping("/boards/name/{name}")
-	public Resources<Board> getBoardByName(@PathVariable String name) {
+	public Collection<Board> getBoardByName(@PathVariable String name) {
 		final List<Board> boards = boardRespository.findByNameIgnoreCaseContaining(name);
-		for (final Board board : boards) {
-			Link selfLink = linkTo(methodOn(BoardController.class).getBoard(board.getBoardId())).withSelfRel();
-			board.add(selfLink);
-		}
-
-		Link allBoardsLink = linkTo(methodOn(BoardController.class).getAll()).withRel("all-boards");
-		Resources<Board> resources = new Resources<Board>(boards, allBoardsLink);
-
-		return resources;
+		if (boards.isEmpty())
+			throw new ResourceNotFoundException("Boards", "name", name);
+		
+		return boards;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/boards")
-	public Resource<Board> addBoard(@RequestBody Board board) {
+	public Board addBoard(@RequestBody Board board) {
 		Board newBoard = boardRespository.save(board);
-
-		Link selfLink = linkTo(methodOn(BoardController.class).getBoard(newBoard.getBoardId())).withSelfRel();
-
-		Resource<Board> resource = new Resource<Board>(newBoard, selfLink);
-		resource.add(linkTo(methodOn(this.getClass()).getAll()).withRel("all-boards"));
-
-		return resource;
+		return newBoard;
 	}
 
 	@PutMapping("/boards/{id}")
-	public Resource<Board> updateBoard(@PathVariable Long id, @RequestBody Board boardDetails) {
+	public Board updateBoard(@PathVariable Long id, @RequestBody Board boardDetails) {
 		Optional<Board> boardOptional = boardRespository.findById(id);
 		if (!boardOptional.isPresent())
 			throw new ResourceNotFoundException("Board", "Id", id);
 
 		boardDetails.setBoardId(id);
-		boardRespository.save(boardDetails);
+		Board updatedBoard = boardRespository.save(boardDetails);
 
-		Link selfLink = linkTo(methodOn(BoardController.class).getBoard(boardDetails.getBoardId())).withSelfRel();
-
-		Resource<Board> resource = new Resource<Board>(boardDetails, selfLink);
-		resource.add(linkTo(methodOn(this.getClass()).getAll()).withRel("all-boards"));
-
-		return resource;
+		return updatedBoard;
 	}
 
 	@DeleteMapping("/boards/{id}")
