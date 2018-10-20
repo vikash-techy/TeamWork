@@ -6,12 +6,20 @@
 
 .chapter-section-panel{
   min-width: 20%;
-  max-width: 100%;
+  width: 100%;
   height: 100%;
 }
+
+.chapter-section-panel-shrink{
+  min-width: 20%;
+  width: 30%;
+  height: 100%;
+}
+
 .video-content-panel{
   width: 80%;
-  height: 100%;
+  height: calc(100vh - 125px);
+
 }
 
 .subject-detail{
@@ -19,6 +27,16 @@
   margin-right: 20%;
   margin-top: 20px;
   margin-bottom: 20px;
+  transition: all 0.5s ease-out;
+}
+
+.subject-detail-shrink{
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: all 0.5s ease-out;
 }
 
 .chapter-panel{

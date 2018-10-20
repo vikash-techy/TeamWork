@@ -1,8 +1,8 @@
-<div class="subject-detail" *ngIf="subject">
+<div class="subject-detail"   [class.subject-detail-shrink]="selectedSectionId"  *ngIf="subject">
   subject-detail works! {{ subject.name | uppercase }}
 
   <div class="chapter-section-content">
-    <div class="chapter-section-panel">
+    <div class="chapter-section-panel" [class.chapter-section-panel-shrink]="selectedSectionId">
       <ul class="chapter-content">
         <li *ngFor="let chapter of chapters" class="chapter-panel">
 
@@ -49,7 +49,9 @@
     <!--Video Player-->
     <div class="video-content-panel" *ngIf="selectedSectionId">
       
-      <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"   ></iframe>
+      <!-- <iframe width="420" height="315" src="https://www.youtube.com/watch?v=_5A3hkHXHX8"   ></iframe> -->
+
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_5A3hkHXHX8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
     </div>
   </div>

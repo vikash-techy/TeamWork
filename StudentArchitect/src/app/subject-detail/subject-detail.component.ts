@@ -23,13 +23,13 @@ export class SubjectDetailComponent implements OnInit {
   selectedSubjectId: number;
   selectedSectionId: number;
   selectedSection: Section;
-  
 
-  constructor (
-    private subjectService: SubjectService ,
-    private chapterService: ChapterService ,
-    private sectionService: SectionService ,
-    private route: ActivatedRoute ,
+
+  constructor(
+    private subjectService: SubjectService,
+    private chapterService: ChapterService,
+    private sectionService: SectionService,
+    private route: ActivatedRoute,
     private location: Location
   ) { }
 
@@ -52,10 +52,13 @@ export class SubjectDetailComponent implements OnInit {
     this.sectionService.getSections(this.selectedSectionId).subscribe(sections => this.sections = sections);
   }
 
-  setSectionId(sectionId) : void {
-    this.selectedSectionId = sectionId;console.log('selectedSectionId='+this.selectedSectionId);
-    this.sectionService.getSections(this.selectedSectionId).subscribe(sections => {this.sections = sections;
-      this.selectedSection = this.sections[0];});
-    console.log('selectedSection='+this.selectedSection);
+  setSectionId(sectionId): void {
+    this.selectedSectionId = sectionId;
+    console.log('selectedSectionId=' + this.selectedSectionId);
+    this.sectionService.getSections(this.selectedSectionId).subscribe(sections => {
+      this.sections = sections;
+      this.selectedSection = this.sections[0];
+    });
+    console.log('selectedSection=' + this.selectedSection);
   }
 }
