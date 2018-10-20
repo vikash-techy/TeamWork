@@ -9,6 +9,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
 import { SubjectDetailComponent } from './subject-detail/subject-detail.component';
+import { SafePipe } from './Pipes/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SubjectDetailComponent } from './subject-detail/subject-detail.componen
     PricingComponent,
     HomeComponent,
     ClassComponent,
-    SubjectDetailComponent
+    SubjectDetailComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

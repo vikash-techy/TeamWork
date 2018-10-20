@@ -58,6 +58,7 @@ export class SubjectDetailComponent implements OnInit {
     this.sectionService.getSections(this.selectedSectionId).subscribe(sections => {
       this.sections = sections;
       this.selectedSection = this.sections[0];
+      this.selectedSection.videoPath = "https://www.youtube.com/embed/_5A3hkHXHX8";
     });
     console.log('selectedSection=' + this.selectedSection);
   }
