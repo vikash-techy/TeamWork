@@ -19,15 +19,14 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"ICSE\",\n\t\"description\":\"Indian Certificate of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"SSC\",\n  \"description\":\"Andhra Pradesh Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -50,16 +49,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"CBSE\",\n  \"description\":\"Central Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Get Board by Id",
 					"request": {
-						"url": "http://localhost:8080/api/boards/id/10",
+						"url": "http://localhost:8080/api/boards/id/1",
 						"method": "GET",
 						"header": [
 							{
@@ -75,9 +74,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"BSE\",\n  \"description\":\"Bihar Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -91,13 +90,18 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"CBSE\",\n  \"description\":\"Central Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -109,35 +113,33 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"BSE\",\n\t\"description\":\"Bihar Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"BSE\",\n  \"description\":\"Bihar Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Board",
 					"request": {
-						"url": "http://localhost:8080/api/boards/13",
+						"url": "http://localhost:8080/api/boards/2",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"UPSE\",\n\t\"description\":\"Utter Pradesh Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"UPSE\",\n  \"description\":\"Utter Pradesh Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				}
@@ -166,16 +168,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"CBSE\",\n  \"description\":\"Central Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Get All Standards By Board",
 					"request": {
-						"url": "http://localhost:8080/api/boards/10/standards",
+						"url": "http://localhost:8080/api/boards/2/standards",
 						"method": "GET",
 						"header": [
 							{
@@ -191,29 +193,28 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"CBSE\",\n\t\"description\":\"Central Board of Secondary Education\"\n}"
+							"raw": "{\n  \"name\":\"CBSE\",\n  \"description\":\"Central Board of Secondary Education\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
 				{
 					"name": "Add Standard To  Board",
 					"request": {
-						"url": "http://localhost:8080/api/boards/10/standards",
+						"url": "http://localhost:8080/api/boards/1/standards",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"10\",\n\t\"description\":\"10th Standard\"\n}"
+							"raw": "{\n  \"name\":\"12\",\n  \"description\":\"12th Standard\"\n}"
 						},
-						"description": ""
+						"description": null
 					},
 					"response": []
 				},
@@ -225,15 +226,433 @@
 						"header": [
 							{
 								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"9\",\n  \"description\":\"CBSE 9th Standard\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Subjects by Standard",
+					"request": {
+						"url": "http://localhost:8080/api/standards/1/subjects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"CBSE\",\n  \"description\":\"Central Board of Secondary Education\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Add Subject",
+					"request": {
+						"url": "http://localhost:8080/api/standards/1/subjects",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
 								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"9\",\n\t\"description\":\"CBSE 9th Standard\"\n}"
+							"raw": "{\n  \"name\":\"Physics\",\n  \"description\":\"Physical Sciences\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Update Subject",
+					"request": {
+						"url": "http://localhost:8080/api/subjects/id/1/instructors/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Maths\",\n  \"description\":\"Mathematics\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Update Instructor in Subject",
+					"request": {
+						"url": "http://localhost:8080/api/subjects/id/1/instructors/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chapter",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Chapters",
+					"request": {
+						"url": "http://localhost:8080/api/chapters",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Chapters by Subject",
+					"request": {
+						"url": "http://localhost:8080/api/subjects/1/chapters",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Chapter",
+					"request": {
+						"url": "http://localhost:8080/api/chapters/id/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Trigonometry\",\n  \"description\":\"Trigonometry\"\n}"
 						},
 						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Chapter",
+					"request": {
+						"url": "http://localhost:8080/api//subjects/1/chapters/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Calculas\",\n  \"description\":\"Calculas\",\n  \"free\":\"true\",\n  \"timeRequiredInSecs\":10000,\n  \"mandatory\":\"true\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Instructor in Chapter",
+					"request": {
+						"url": "http://localhost:8080/api/chapters/id/1/instructors/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Section",
+			"description": "Collection of APIs for Sections in a Chapter",
+			"item": [
+				{
+					"name": "Get All Sections",
+					"request": {
+						"url": "http://localhost:8080/api/sections",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sections by Chapter",
+					"request": {
+						"url": "http://localhost:8080/api/chapters/1/sections",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Section",
+					"request": {
+						"url": "http://localhost:8080/api/sections/id/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Trigonometry\",\n  \"description\":\"Trigonometry\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add Section",
+					"request": {
+						"url": "http://localhost:8080/api//chapters/1/sections/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"Introduction\",\n  \"description\":\"Introduction\",\n  \"free\":\"true\",\n  \"timeRequiredInSecs\":2500,\n  \"mandatory\":\"true\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Instructor in Section",
+					"request": {
+						"url": "http://localhost:8080/api/sections/id/1/instructors/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Content in Section",
+					"request": {
+						"url": "http://localhost:8080/api/sections/id/1/content/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-spring-data-verbose+json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instructor",
+			"description": "",
+			"item": [
+				{
+					"name": "Add Instructor",
+					"request": {
+						"url": "http://localhost:8080/api/instructors",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\":\"Vikash\",\n  \"lastName\":\"Yadav\",\n  \"designation\":\"MD in Backchodi\",\n  \"email\":\"vik1987.yadav@gmail.com\",\n  \"introduction\":\"Aise hi kuch andh shandh\",\n  \"registrationDate\":\"2018-09-02\"\n}"
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get Instructor By Id",
+					"request": {
+						"url": "http://localhost:8080/api/instructors/id/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get Instructor by Email",
+					"request": {
+						"url": "http://localhost:8080/api/instructors/vik1987.yadav@gmail",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"description": null
 					},
 					"response": []
 				}
