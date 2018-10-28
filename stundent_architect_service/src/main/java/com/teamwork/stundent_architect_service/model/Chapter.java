@@ -3,8 +3,11 @@
  */
 package com.teamwork.stundent_architect_service.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +29,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @author suryateja.kasulanati
@@ -35,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "chapter")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "chapterId")
 public class Chapter {
 
 	@Id
@@ -49,14 +58,20 @@ public class Chapter {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "chapter", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Section> sections = new ArrayList<Section>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "subject_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Subject subject;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "instructor_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Instructor instructor;
 
 	@Column(name = "is_mandatory")
@@ -94,6 +109,14 @@ public class Chapter {
 		this.name = name;
 	}
 
+	public List<Section> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -122,7 +145,7 @@ public class Chapter {
 		return isMandatory;
 	}
 
-	public void setMandatory(boolean isMandatory) {
+	public void setIsMandatory(boolean isMandatory) {
 		this.isMandatory = isMandatory;
 	}
 
@@ -130,7 +153,7 @@ public class Chapter {
 		return isFree;
 	}
 
-	public void setFree(boolean isFree) {
+	public void setIsFree(boolean isFree) {
 		this.isFree = isFree;
 	}
 

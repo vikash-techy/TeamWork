@@ -11,12 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 /**
  * @author suryateja.kasulanati
  *
  */
 @Entity
 @Table(name = "content")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "contentId")
 public class Content {
 
 	@Id
@@ -28,8 +32,8 @@ public class Content {
 	@NotBlank
 	private String contentType;
 
-	@Column(name = "content_location")
-	private String cotentLocation;
+	@Column(name = "content_location", unique = true)
+	private String contentLocation;
 
 	public Long getContentId() {
 		return contentId;
@@ -47,17 +51,17 @@ public class Content {
 		this.contentType = contentType;
 	}
 
-	public String getCotentLocation() {
-		return cotentLocation;
+	public String getContentLocation() {
+		return contentLocation;
 	}
 
-	public void setCotentLocation(String cotentLocation) {
-		this.cotentLocation = cotentLocation;
+	public void setContentLocation(String contentLocation) {
+		this.contentLocation = contentLocation;
 	}
 
 	@Override
 	public String toString() {
-		return "Content [contentId=" + contentId + ", contentType=" + contentType + ", cotentLocation=" + cotentLocation
+		return "Content [contentId=" + contentId + ", contentType=" + contentType + ", contentLocation=" + contentLocation
 				+ "]";
 	}
 

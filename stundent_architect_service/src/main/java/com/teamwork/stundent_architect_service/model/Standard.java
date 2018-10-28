@@ -3,8 +3,11 @@
  */
 package com.teamwork.stundent_architect_service.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +29,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @author suryateja.kasulanati
@@ -35,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "standard")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "standardId")
 public class Standard {
 
 	@Id
@@ -48,10 +57,15 @@ public class Standard {
 
 	@Column(name = "description")
 	private String description;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "standard", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Subject> subjects = new ArrayList<Subject>();
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "board_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Board board;
 
 	@Column(nullable = false, updatable = false)
@@ -86,6 +100,14 @@ public class Standard {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
 	}
 
 	public Board getBoard() {

@@ -19,14 +19,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamwork.stundent_architect_service.exception.ResourceNotFoundException;
 import com.teamwork.stundent_architect_service.model.Board;
 import com.teamwork.stundent_architect_service.model.Standard;
 import com.teamwork.stundent_architect_service.repository.BoardRespository;
-import com.teamwork.stundent_architect_service.repository.StandardRespository;
+import com.teamwork.stundent_architect_service.repository.StandardRepository;
 
 /**
  * @author suryateja.kasulanati
@@ -38,23 +37,23 @@ public class StandardController implements ApiController {
 	protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private StandardRespository standardRespository;
+	private StandardRepository standardRepository;
 
 	@Autowired
 	private BoardRespository boardRepository;
 
 	@GetMapping("/standards")
 	public Collection<Standard> getAll() {
-		final List<Standard> standards = standardRespository.findAll();
+		final List<Standard> standards = standardRepository.findAll();
 		if (standards.isEmpty())
 			throw new ResourceNotFoundException("Standard", "", null);
 
 		return standards;
 	}
 
-	@RequestMapping("/standards/id/{id}")
+	@GetMapping("/standards/id/{id}")
 	public Standard getStandard(@PathVariable Long id) {
-		Optional<Standard> standard = standardRespository.findById(id);
+		Optional<Standard> standard = standardRepository.findById(id);
 		if (!standard.isPresent())
 			throw new ResourceNotFoundException("Standard", "Id", id);
 
@@ -63,7 +62,7 @@ public class StandardController implements ApiController {
 
 	@GetMapping("/boards/{boardId}/standards")
 	public Collection<Standard> getAllStandardsByBoard(@PathVariable Long boardId) {
-		final List<Standard> standards = standardRespository.findByBoard(boardId);
+		final List<Standard> standards = standardRepository.findByBoard(boardId);
 		if (standards.isEmpty())
 			throw new ResourceNotFoundException("Standards for Board", "Id", boardId);
 		
@@ -76,22 +75,22 @@ public class StandardController implements ApiController {
 				.orElseThrow(() -> new ResourceNotFoundException("Board", "Id", boardId));
 
 		standard.setBoard(board);
-		return standardRespository.save(standard);
+		return standardRepository.save(standard);
 	}
 
 	@PutMapping("standards/{standardId}")
 	public Standard updateStandard(@PathVariable Long standardId, @Valid @RequestBody Standard newStandard) {
-		Standard standard = standardRespository.findById(standardId)
+		Standard standard = standardRepository.findById(standardId)
 				.orElseThrow(() -> new ResourceNotFoundException("Standard", "Id", standardId));
 		standard.setName(newStandard.getName());
 		standard.setDescription(newStandard.getDescription());
-		return standardRespository.save(standard);
+		return standardRepository.save(standard);
 	}
 
 	@DeleteMapping("standards/{standardId}")
 	public ResponseEntity<?> deleteStandard(@PathVariable Long standardId) {
-		return standardRespository.findById(standardId).map(standard -> {
-			standardRespository.delete(standard);
+		return standardRepository.findById(standardId).map(standard -> {
+			standardRepository.delete(standard);
 			return ResponseEntity.ok().build();
 		}).orElseThrow(() -> new ResourceNotFoundException("Standard", "Id", standardId));
 	}

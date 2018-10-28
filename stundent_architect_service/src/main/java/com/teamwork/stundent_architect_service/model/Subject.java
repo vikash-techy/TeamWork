@@ -3,8 +3,11 @@
  */
 package com.teamwork.stundent_architect_service.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -14,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +29,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @author suryateja.kasulanati
@@ -35,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "subject")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "subjectId")
 public class Subject {
 
 	@Id
@@ -49,14 +58,20 @@ public class Subject {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "subject", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Chapter> chapters = new ArrayList<Chapter>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "standard_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Standard standard;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "instructor_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Instructor instructor;
 
 	@Column(nullable = false, updatable = false)
@@ -91,6 +106,14 @@ public class Subject {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Chapter> getChapters() {
+		return chapters;
+	}
+
+	public void setChapters(List<Chapter> chapters) {
+		this.chapters = chapters;
 	}
 
 	public Standard getStandard() {

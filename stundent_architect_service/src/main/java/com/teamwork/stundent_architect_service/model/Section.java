@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.OnDelete;
@@ -25,7 +26,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @author suryateja.kasulanati
@@ -35,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "section")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "sectionId")
 public class Section {
 
 	@Id
@@ -49,20 +55,26 @@ public class Section {
 	@Column(name = "description")
 	private String description;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "chapter_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Chapter chapter;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "instructor_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIdentityReference(alwaysAsId = true)
 	private Instructor instructor;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "content_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Content content;
+
+	@JsonBackReference
+	@Transient
+	private String contentLocation;
 
 	@Column(name = "is_mandatory")
 	private boolean isMandatory;
@@ -131,11 +143,19 @@ public class Section {
 		this.content = content;
 	}
 
+	public String getContentLocation() {
+		return contentLocation;
+	}
+
+	public void setContentLocation(String contentLocation) {
+		this.contentLocation = contentLocation;
+	}
+
 	public boolean isMandatory() {
 		return isMandatory;
 	}
 
-	public void setMandatory(boolean isMandatory) {
+	public void setIsMandatory(boolean isMandatory) {
 		this.isMandatory = isMandatory;
 	}
 
@@ -143,7 +163,7 @@ public class Section {
 		return isFree;
 	}
 
-	public void setFree(boolean isFree) {
+	public void setIsFree(boolean isFree) {
 		this.isFree = isFree;
 	}
 

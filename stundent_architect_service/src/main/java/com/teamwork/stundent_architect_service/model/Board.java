@@ -3,14 +3,19 @@
  */
 package com.teamwork.stundent_architect_service.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +25,10 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * @author suryateja.kasulanati
@@ -30,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "Board")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "boardId")
 public class Board {
 
 	@Id
@@ -54,6 +63,10 @@ public class Board {
 	@LastModifiedDate
 	private Date updatedAt;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "board", fetch = FetchType.LAZY)
+	@JsonBackReference
+	private List<Standard> standards = new ArrayList<Standard>();
+
 	public Long getBoardId() {
 		return boardId;
 	}
@@ -76,6 +89,14 @@ public class Board {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public void setStandards(List<Standard> standards) {
+		this.standards = standards;
+	}
+
+	public List<Standard> getStandards() {
+		return standards;
 	}
 
 	public Date getCreatedAt() {

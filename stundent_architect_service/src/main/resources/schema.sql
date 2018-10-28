@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `section` (
   `is_mandatory` BOOLEAN DEFAULT FALSE,
   `is_free` BOOLEAN DEFAULT FALSE,
   `time_required_in_sec` INT DEFAULT NULL,
-  `content_id` INT NOT NULL,
+  `content_id` INT DEFAULT NULL,
   `created_at` DATETIME NOT NULL,
   `updated_at` DATETIME NOT NULL
 );

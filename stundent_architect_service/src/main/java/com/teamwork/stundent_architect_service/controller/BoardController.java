@@ -15,10 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.teamwork.stundent_architect_service.exception.ResourceNotFoundException;
@@ -46,7 +45,7 @@ public class BoardController implements ApiController {
 		return boards;
 	}
 
-	@RequestMapping("/boards/id/{id}")
+	@GetMapping("/boards/id/{id}")
 	public Board getBoard(@PathVariable Long id) {
 		Optional<Board> board = boardRespository.findById(id);
 		if (!board.isPresent())
@@ -55,7 +54,7 @@ public class BoardController implements ApiController {
 		return board.get();
 	}
 
-	@RequestMapping("/boards/name/{name}")
+	@GetMapping("/boards/name/{name}")
 	public Collection<Board> getBoardByName(@PathVariable String name) {
 		final List<Board> boards = boardRespository.findByNameIgnoreCaseContaining(name);
 		if (boards.isEmpty())
@@ -64,7 +63,7 @@ public class BoardController implements ApiController {
 		return boards;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/boards")
+	@PostMapping(value = "/boards")
 	public Board addBoard(@RequestBody Board board) {
 		Board newBoard = boardRespository.save(board);
 		return newBoard;

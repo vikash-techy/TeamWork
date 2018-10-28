@@ -16,6 +16,6 @@ import com.teamwork.stundent_architect_service.model.Chapter;
  */
 public interface ChapterRepository extends JpaRepository<Chapter, Long> {
 
-	@Query(value = "select * from chapter where standard_id = ?1 ", nativeQuery = true)
+	@Query(value = "select * from chapter where subject_id = ?1 ", nativeQuery = true)
 	public List<Chapter> findBySubject(Long subjectId);
 }

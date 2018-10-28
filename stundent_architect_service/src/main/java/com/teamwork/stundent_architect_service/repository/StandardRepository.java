@@ -14,7 +14,7 @@ import com.teamwork.stundent_architect_service.model.Standard;
  * @author suryateja.kasulanati
  *
  */
-public interface StandardRespository extends JpaRepository<Standard, Long> {
+public interface StandardRepository extends JpaRepository<Standard, Long> {
 
 	@Query(value = "select * from standard where board_id = ?1 ", nativeQuery = true)
 	public List<Standard> findByBoard(Long boardId);

@@ -17,4 +17,5 @@ import com.teamwork.stundent_architect_service.model.Section;
 public interface SectionRepository extends JpaRepository<Section, Long> {
 
 	@Query(value = "select * from section where chapter_id = ?1 ", nativeQuery = true)
-	public List<Section> findByChapter(Long chapterId);}
+	public List<Section> findByChapter(Long chapterId);
+}
