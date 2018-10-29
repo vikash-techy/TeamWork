@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -48,6 +49,7 @@ public class SubjectController implements ApiController {
 	@Autowired
 	private InstructorRepository instructorRepository;
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/subjects")
 	public Collection<Subject> getAll() {
 		final List<Subject> subjects = subjectRepository.findAll();
@@ -57,6 +59,7 @@ public class SubjectController implements ApiController {
 		return subjects;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/subjects/id/{id}")
 	public Subject getSubject(@PathVariable Long id) {
 		Optional<Subject> subject = subjectRepository.findById(id);
@@ -66,6 +69,7 @@ public class SubjectController implements ApiController {
 		return subject.get();
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/standards/{standardId}/subjects")
 	public Collection<Subject> getAllSubjectsByStandard(@PathVariable Long standardId) {
 		final List<Subject> subjects = subjectRepository.findByStandard(standardId);

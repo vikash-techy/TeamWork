@@ -19,9 +19,15 @@ group = 'com.teamwork'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+bootJar {
+    baseName = 'gs-rest-service-cors'
+    version =  '0.1.0'
+}
 repositories {
 	mavenCentral()
 }
+
+
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-websocket")
