@@ -24,8 +24,8 @@
         </svg>
       </div>
       <div class="leftnav_text">
-        <select class="leftnav_select" [(ngModel)]="selectedClassId" (change)="getSubjects()">
-          <option *ngFor="let class of classes" [value]="class.classId">{{class.name}}</option>
+        <select class="leftnav_select" [(ngModel)]="selectedStandardId" (change)="getSubjects()">
+          <option *ngFor="let class of classes" [value]="class.standardId">{{class.name}}</option>
         </select>
       </div>
     </div>

@@ -19,36 +19,42 @@ export class ClassComponent implements OnInit {
   displaySubjects: Subject[];
 
   selectedBoardId: number;
-  selectedClassId: number;
+  selectedStandardId: number;
 
 
   constructor(private subjectService: SubjectService, private appService: AppService) { }
 
   ngOnInit() {
     this.getBoards();
-    this.getClasses();
-    this.getSubjects();
-    
   }
   // This method will get all the Educational Boards
   getBoards(): void {
-    this.appService.getBoards().subscribe(boards => this.boards = boards);
-    this.selectedBoardId = this.boards[0].boardId;
+    this.appService.getBoards().subscribe((response) => {
+      this.boards = response;
+      this.selectedBoardId = this.boards[0].boardId;
+      this.getClasses();
+    });
   }
 
   // This method will get all the Classes Supported for the selected Board
   getClasses(): void {
     console.log("selctecd board => " + this.selectedBoardId);
-    this.appService.getClasses(this.selectedBoardId).subscribe(classes => this.classes = classes);
-    this.selectedClassId = this.classes[0].classId;
-    console.log("selectedClassId => " + this.selectedClassId);
-    this.getSubjects();
+    this.appService.getClasses(this.selectedBoardId).subscribe((classes) => {
+      this.classes = classes;
+      this.selectedStandardId = this.classes[0].standardId;
+      console.log("selectedStandardId => " + this.selectedStandardId);
+      this.getSubjects();
+    });
+
   }
 
   // This method will get all the subject for a given class
   getSubjects(): void {
-    this.subjectService.getSubjects(this.selectedClassId).subscribe(subjects => this.subjects = subjects);
-    this.displaySubjects = this.subjects;
+    this.subjectService.getSubjects(this.selectedStandardId).subscribe((subjects) => {
+      this.subjects = subjects;
+      this.displaySubjects = this.subjects;
+    });
+
   }
 
   getSubject(): void {

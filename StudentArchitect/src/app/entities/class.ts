@@ -1,5 +1,5 @@
 export class Class {
-    classId: number;
+    standardId: number;
     name: string;
     boardId: number;
 }
