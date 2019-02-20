@@ -19,15 +19,9 @@ group = 'com.teamwork'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
-bootJar {
-    baseName = 'gs-rest-service-cors'
-    version =  '0.1.0'
-}
 repositories {
 	mavenCentral()
 }
-
-
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-websocket")
@@ -43,6 +37,8 @@ dependencies {
 	//compile('org.projectlombok:lombok')
 	compile(group:'com.github.paulcwarren',name:'spring-content-fs-boot-starter',version:'0.2.0')
 	compile(group:'com.github.paulcwarren',name:'spring-content-rest-boot-starter',version:'0.2.0')
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	compile(group:'javax.xml.bind',name:'jaxb-api',version:'2.2.4')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
